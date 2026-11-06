@@ -23,7 +23,9 @@
         --leaf-deep: #0d4c38;
         --mint: #e9f4ee;
         --focus: #e7a614;
-        --card: #f5f1f8;
+        --card: rgba(245, 241, 248, 0.72);
+        --u: 1vh;
+        --u: 1dvh;
       }
       * {
         box-sizing: border-box;
@@ -45,7 +47,7 @@
         width: min(100vw, calc(100dvh * 0.5627));
         height: min(100vh, calc(100vw * 1.7772));
         height: min(100dvh, calc(100vw * 1.7772));
-        padding: 24px 0;
+        padding: clamp(8px, calc(var(--u) * 1.8), 24px) 0;
         background-image: url(image.png);
         background-size: cover;
         background-repeat: no-repeat;
@@ -57,36 +59,42 @@
       .container {
         margin: auto;
         background: var(--card);
-        text-align: center;
-        padding: 28px 24px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
         border-radius: 24px;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 18px 40px rgba(16, 42, 34, 0.18);
+        text-align: center;
+        padding: clamp(12px, calc(var(--u) * 2.2), 28px)
+          clamp(14px, 4vw, 24px);
         width: 90%;
         max-width: 400px;
       }
       .profile img {
-        width: 150px;
-        height: 150px;
+        width: clamp(84px, calc(var(--u) * 11.5), 150px);
+        height: clamp(84px, calc(var(--u) * 11.5), 150px);
         object-fit: cover;
       }
       h1 {
         font-family: "Shadows Into Light", sans-serif;
-        font-size: 38px;
-        margin: 10px 0;
+        font-size: clamp(24px, calc(var(--u) * 3.2), 38px);
+        margin: clamp(4px, calc(var(--u) * 0.8), 10px) 0;
         color: var(--leaf);
       }
       p {
         color: var(--muted);
-        font-size: 18px;
+        font-size: clamp(12.5px, calc(var(--u) * 1.8), 18px);
+        line-height: 1.4;
       }
       .social-icons {
         display: flex;
         justify-content: center;
-        gap: 14px;
-        margin-bottom: 18px;
+        gap: clamp(10px, calc(var(--u) * 1.4), 14px);
+        margin-bottom: clamp(8px, calc(var(--u) * 1.6), 18px);
       }
       .social-icons a {
         text-decoration: none;
-        font-size: 22px;
+        font-size: clamp(16px, calc(var(--u) * 2.2), 22px);
         color: var(--leaf);
         transition: all 0.25s ease;
       }
@@ -99,9 +107,13 @@
         text-decoration: none;
         background: var(--mint);
         color: var(--leaf-deep);
-        padding: 12px 18px;
-        margin: 10px 8px;
+        padding: clamp(6px, calc(var(--u) * 1.2), 12px)
+          clamp(12px, 4vw, 18px);
+        margin: clamp(3.5px, calc(var(--u) * 0.8), 10px)
+          clamp(4px, 1.2vw, 8px);
         border-radius: 999px;
+        font-size: clamp(12.5px, calc(var(--u) * 1.55), 16px);
+        line-height: 1.35;
         font-weight: 600;
         transition: all 0.25s ease;
       }
@@ -118,8 +130,8 @@
         background: var(--leaf-deep);
       }
       .copyright {
-        margin: 28px 0 4px;
-        font-size: 13px;
+        margin: clamp(10px, calc(var(--u) * 1.8), 28px) 0 4px;
+        font-size: clamp(10px, calc(var(--u) * 1.1), 13px);
         color: var(--muted);
       }
       .copyright a {
@@ -223,31 +235,31 @@
 
       @media (max-width: 480px) {
         .container {
-          padding: 22px 16px;
           width: calc(100% - 32px);
         }
+      }
+
+      /* Ponsel pendek: rapatkan lagi supaya semua tautan tetap muat */
+      @media (max-height: 600px) and (orientation: portrait) {
+        .container {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
         .profile img {
-          width: 120px;
-          height: 120px;
+          width: 72px;
+          height: 72px;
         }
-        h1 {
-          font-size: 30px;
-        }
-        p {
-          color: var(--muted);
-          font-size: 16px;
-        }
-        .social-icons a {
-          font-size: 20px;
+        .social-icons {
+          margin-bottom: 6px;
         }
         .links a {
-          font-size: 13px;
-          padding: 11px 16px;
-          margin: 8px 4px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+          margin-top: 3px;
+          margin-bottom: 3px;
         }
         .copyright {
-          margin: 22px 0 4px;
-          font-size: 13px;
+          margin-top: 8px;
         }
       }
     </style>
