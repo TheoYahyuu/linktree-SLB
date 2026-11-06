@@ -29,19 +29,33 @@
         box-sizing: border-box;
       }
       body {
-        background-image: url(image.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        background: #101a1c;
         font-family: "Poppins", sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
-        padding: 20px 0;
+        min-height: 100dvh;
         margin: 0;
       }
+      /* Bingkai tampilan mengikuti rasio image.png (736 x 1308) */
+      .page {
+        position: relative;
+        width: min(100vw, calc(100vh * 0.5627));
+        width: min(100vw, calc(100dvh * 0.5627));
+        height: min(100vh, calc(100vw * 1.7772));
+        height: min(100dvh, calc(100vw * 1.7772));
+        padding: 24px 0;
+        background-image: url(image.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
       .container {
+        margin: auto;
         background: var(--card);
         text-align: center;
         padding: 28px 24px;
@@ -190,11 +204,27 @@
         }
       }
 
+      /* Di layar yang lebih ramping dari image.png, tampilan memenuhi layar */
+      @media (max-aspect-ratio: 736 / 1308) {
+        .page {
+          width: 100vw;
+          height: 100vh;
+          height: 100dvh;
+        }
+      }
+      /* Layar pendek (mis. ponsel landscape) juga dibuat memenuhi layar */
+      @media (max-height: 500px) {
+        .page {
+          width: 100vw;
+          height: 100vh;
+          height: 100dvh;
+        }
+      }
+
       @media (max-width: 480px) {
         .container {
           padding: 22px 16px;
           width: calc(100% - 32px);
-          margin: 0 auto;
         }
         .profile img {
           width: 120px;
@@ -223,46 +253,48 @@
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="profile">
-        <img src="logo.png" alt="Logo SLB Rumah Melati" />
+    <div class="page">
+      <div class="container">
+        <div class="profile">
+          <img src="logo.png" alt="Logo SLB Rumah Melati" />
+        </div>
+        <h1>SLB Rumah Melati</h1>
+        <p>Sekolah Luar Biasa | Terapi | Pendidikan</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/share/1DrCscExqD/"><i class="ri-facebook-circle-line"></i></a>
+          <a href="https://youtube.com/@slbrumahmelati4933?si=D1GmnCgEJ5jx4f91"
+            ><i class="ri-youtube-line"></i
+          ></a>
+          <a
+            href="https://www.tiktok.com/@slb.rumah.melati?_r=1&_t=ZS-9B7LF76SNee"
+            ><i class="ri-tiktok-line"></i
+          ></a>
+          <a
+            href="https://www.instagram.com/slbrumahmelati?dlrf=MW1udmRjODVkb2pndA=="
+            ><i class="ri-instagram-line"></i
+          ></a>
+        </div>
+        <div class="links">
+          <a href="https://slb-rumah-melati.vercel.app/">Web Kami</a>
+          <a href="https://www.facebook.com/share/1DrCscExqD/">Facebook</a>
+          <a href="https://youtube.com/@slbrumahmelati4933?si=D1GmnCgEJ5jx4f91"
+            >YouTube</a
+          >
+          <a
+            href="https://www.tiktok.com/@slb.rumah.melati?_r=1&_t=ZS-9B7LF76SNee"
+            >TikTok</a
+          >
+          <a
+            href="https://www.instagram.com/slbrumahmelati?dlrf=MW1udmRjODVkb2pndA=="
+            >Instagram</a
+          >
+          <a href="https://wa.me/6285779096272" class="primary">Contact Me</a>
+          <a href="#">Rincian Biaya</a>
+          <a href="#">Pendaftaran Terapi</a>
+          <a href="#">Pendaftaran Siswa Baru</a>
+        </div>
+        <p class="copyright">SLB Rumah Melati.</p>
       </div>
-      <h1>SLB Rumah Melati</h1>
-      <p>Sekolah Luar Biasa | Terapi | Pendidikan</p>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/share/1DrCscExqD/"><i class="ri-facebook-circle-line"></i></a>
-        <a href="https://youtube.com/@slbrumahmelati4933?si=D1GmnCgEJ5jx4f91"
-          ><i class="ri-youtube-line"></i
-        ></a>
-        <a
-          href="https://www.tiktok.com/@slb.rumah.melati?_r=1&_t=ZS-9B7LF76SNee"
-          ><i class="ri-tiktok-line"></i
-        ></a>
-        <a
-          href="https://www.instagram.com/slbrumahmelati?dlrf=MW1udmRjODVkb2pndA=="
-          ><i class="ri-instagram-line"></i
-        ></a>
-      </div>
-      <div class="links">
-        <a href="https://slb-rumah-melati.vercel.app/">Web Kami</a>
-        <a href="https://www.facebook.com/share/1DrCscExqD/">Facebook</a>
-        <a href="https://youtube.com/@slbrumahmelati4933?si=D1GmnCgEJ5jx4f91"
-          >YouTube</a
-        >
-        <a
-          href="https://www.tiktok.com/@slb.rumah.melati?_r=1&_t=ZS-9B7LF76SNee"
-          >TikTok</a
-        >
-        <a
-          href="https://www.instagram.com/slbrumahmelati?dlrf=MW1udmRjODVkb2pndA=="
-          >Instagram</a
-        >
-        <a href="https://wa.me/6285779096272" class="primary">Contact Me</a>
-        <a href="#">Rincian Biaya</a>
-        <a href="#">Pendaftaran Terapi</a>
-        <a href="#">Pendaftaran Siswa Baru</a>
-      </div>
-      <p class="copyright">SLB Rumah Melati.</p>
     </div>
   </body>
 </html>
